@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feliz Cumpleaños, Gordita</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Dancing Script', cursive;
+      background: url('fondo1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      margin-top: 60px;
+      text-shadow: 3px 3px 6px #000;
+      z-index: 10;
+      position: relative;
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 30px;
+      z-index: 10;
+      position: relative;
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 1em;
+      background-color: #ffb703;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #fb8500;
+      transform: scale(1.1);
+    }
+
+    .gift-emoji {
+      font-size: 1.4em;
+      margin-right: 6px;
+      animation: bounce 1s infinite alternate;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
+    }
+
+    .mensaje {
+      max-width: 700px;
+      margin: 30px auto;
+      font-size: 1.6em;
+      color: #000;
+      text-align: center;
+      display: none;
+      z-index: 10;
+      position: relative;
+     font-weight: bold;
+     text-shadow:
+     -1px -1px 0 #fff,
+      1px -1px 0 #fff,
+     -1px  1px 0 #fff,
+      1px  1px 0 #fff;
+    }
+
+    /* Bolitas de colores */
+    .bola {
+      position: fixed;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: caer linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(-100px); }
+      100% { transform: translateY(110vh); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feliz Cumpleaños, Gordita 🩶</h1>
+
+  <div class="btn-container">
+    <button id="verMensaje">
+      <span class="gift-emoji">🎁</span>  MI PEQUEÑO DETALLE
+    </button>
+  </div>
+
+  <div id="texto1" class="mensaje">
+    Gorda eres una persona increible en cada paso que das.
+    Nunca dejes de brillar ni de creer en ti, porque tienes un corazón enorme y una mente brillante
+    capaces de alcanzar todo lo que sueñas, sigue luchando con valentía, que lo mejor
+    de tu vida aún está por venir.
+  </div>
+
+  <div id="texto2" class="mensaje">
+    En tu día quiero recordarte<br>
+    que mereces amor en cada parte de tu vida<br>
+    que los sueños que anhelas lograr<br>
+    están ahí, esperándote.<br><br>
+    Sonríe con fuerza, vive sin miedo<br>
+    y sigue tu rumbo con valentía.<br>
+    Feliz cumpleaños, niña<br>
+    Que tu dia a dia siga lleno de alegria. 🙏🏼
+  </div>
+
+  <audio id="musica" loop autoplay>
+    <source src="musica.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const boton = document.getElementById('verMensaje');
+    const texto1 = document.getElementById('texto1');
+    const texto2 = document.getElementById('texto2');
+    const musica = document.getElementById('musica');
+
+    boton.addEventListener('click', () => {
+      boton.style.display = 'none';
+      texto1.style.display = 'block';
+      musica.play().catch(() => {});
+      setTimeout(() => {
+        texto2.style.display = 'block';
+      }, 3000); // Mostrar texto2 después de 3 segundos
+    });
+
+    // Bolitas de colores desde el inicio
+    for (let i = 0; i < 100; i++) {
+      const bola = document.createElement('div');
+      bola.className = 'bola';
+      const size = Math.random() * 10 + 5;
+      bola.style.width = `${size}px`;
+      bola.style.height = `${size}px`;
+      bola.style.left = `${Math.random() * 100}vw`;
+      bola.style.top = `${Math.random() * -100}px`;
+      bola.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+      bola.style.animationDuration = `${Math.random() * 3 + 4}s`;
+      document.body.appendChild(bola);
+    }
+  </script>
+</body>
+</html>
